@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ADA039E11C8DDDFA004B452D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA039E01C8DDDFA004B452D /* AppDelegate.m */; };
+		ADA039E41C8DDDFA004B452D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA039E31C8DDDFA004B452D /* main.m */; };
+		E4C64F2E9103EA65AC374B09 /* Pods_airbnblite_backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB09DCA3FBA88556F34D9C7 /* Pods_airbnblite_backend.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1EB09DCA3FBA88556F34D9C7 /* Pods_airbnblite_backend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_airbnblite_backend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B74401872A40C8846F5D454 /* Pods-airbnblite-backend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnblite-backend.debug.xcconfig"; path = "Pods/Target Support Files/Pods-airbnblite-backend/Pods-airbnblite-backend.debug.xcconfig"; sourceTree = "<group>"; };
+		87DDAD534BD9727980F44EDB /* Pods-airbnblite-backend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnblite-backend.release.xcconfig"; path = "Pods/Target Support Files/Pods-airbnblite-backend/Pods-airbnblite-backend.release.xcconfig"; sourceTree = "<group>"; };
+		ADA039DC1C8DDDFA004B452D /* airbnblite-backend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "airbnblite-backend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADA039DF1C8DDDFA004B452D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ADA039E01C8DDDFA004B452D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ADA039E31C8DDDFA004B452D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ADA039EA1C8DDDFA004B452D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9D7D9C53B804775D42BB4F5 /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		FEF72EE5D162F3BF7DBC5361 /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ADA039D91C8DDDFA004B452D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4C64F2E9103EA65AC374B09 /* Pods_airbnblite_backend.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		083BE7B5B59F9B9E75F58F94 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FEF72EE5D162F3BF7DBC5361 /* Pods-HelloWorld.debug.xcconfig */,
+				E9D7D9C53B804775D42BB4F5 /* Pods-HelloWorld.release.xcconfig */,
+				2B74401872A40C8846F5D454 /* Pods-airbnblite-backend.debug.xcconfig */,
+				87DDAD534BD9727980F44EDB /* Pods-airbnblite-backend.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		310FE65FBBAD6A7B667D61C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EB09DCA3FBA88556F34D9C7 /* Pods_airbnblite_backend.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADA039D31C8DDDFA004B452D = {
+			isa = PBXGroup;
+			children = (
+				ADA039DE1C8DDDFA004B452D /* backend */,
+				ADA039DD1C8DDDFA004B452D /* Products */,
+				083BE7B5B59F9B9E75F58F94 /* Pods */,
+				310FE65FBBAD6A7B667D61C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		ADA039DD1C8DDDFA004B452D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ADA039DC1C8DDDFA004B452D /* airbnblite-backend.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ADA039DE1C8DDDFA004B452D /* backend */ = {
+			isa = PBXGroup;
+			children = (
+				ADA039DF1C8DDDFA004B452D /* AppDelegate.h */,
+				ADA039E01C8DDDFA004B452D /* AppDelegate.m */,
+				ADA039EA1C8DDDFA004B452D /* Info.plist */,
+				ADA039E21C8DDDFA004B452D /* Supporting Files */,
+			);
+			path = backend;
+			sourceTree = "<group>";
+		};
+		ADA039E21C8DDDFA004B452D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADA039E31C8DDDFA004B452D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ADA039DB1C8DDDFA004B452D /* airbnblite-backend */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADA039ED1C8DDDFA004B452D /* Build configuration list for PBXNativeTarget "airbnblite-backend" */;
+			buildPhases = (
+				65C011259A468A7DED8606D7 /* [CP] Check Pods Manifest.lock */,
+				D09C1BB1F7F6BB2DCC1D01A4 /* Check Pods Manifest.lock */,
+				ADA039D81C8DDDFA004B452D /* Sources */,
+				ADA039D91C8DDDFA004B452D /* Frameworks */,
+				ADA039DA1C8DDDFA004B452D /* Resources */,
+				2343BE4CEC425837C77BE15F /* Embed Pods Frameworks */,
+				3E0DB27099D5304DC9C18546 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "airbnblite-backend";
+			productName = HelloWorld;
+			productReference = ADA039DC1C8DDDFA004B452D /* airbnblite-backend.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ADA039D41C8DDDFA004B452D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Criollo.io;
+				TargetAttributes = {
+					ADA039DB1C8DDDFA004B452D = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = ADA039D71C8DDDFA004B452D /* Build configuration list for PBXProject "airbnblite-backend" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+				Base,
+			);
+			mainGroup = ADA039D31C8DDDFA004B452D;
+			productRefGroup = ADA039DD1C8DDDFA004B452D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ADA039DB1C8DDDFA004B452D /* airbnblite-backend */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ADA039DA1C8DDDFA004B452D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2343BE4CEC425837C77BE15F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E0DB27099D5304DC9C18546 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-airbnblite-backend/Pods-airbnblite-backend-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/Criollo/Criollo.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Criollo.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-airbnblite-backend/Pods-airbnblite-backend-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65C011259A468A7DED8606D7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-airbnblite-backend-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D09C1BB1F7F6BB2DCC1D01A4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ADA039D81C8DDDFA004B452D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADA039E41C8DDDFA004B452D /* main.m in Sources */,
+				ADA039E11C8DDDFA004B452D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		ADA039EB1C8DDDFA004B452D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		ADA039EC1C8DDDFA004B452D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		ADA039EE1C8DDDFA004B452D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B74401872A40C8846F5D454 /* Pods-airbnblite-backend.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = backend/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.criollo.HelloWorld;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		ADA039EF1C8DDDFA004B452D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87DDAD534BD9727980F44EDB /* Pods-airbnblite-backend.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = backend/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.criollo.HelloWorld;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ADA039D71C8DDDFA004B452D /* Build configuration list for PBXProject "airbnblite-backend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADA039EB1C8DDDFA004B452D /* Debug */,
+				ADA039EC1C8DDDFA004B452D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADA039ED1C8DDDFA004B452D /* Build configuration list for PBXNativeTarget "airbnblite-backend" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADA039EE1C8DDDFA004B452D /* Debug */,
+				ADA039EF1C8DDDFA004B452D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ADA039D41C8DDDFA004B452D /* Project object */;
+}

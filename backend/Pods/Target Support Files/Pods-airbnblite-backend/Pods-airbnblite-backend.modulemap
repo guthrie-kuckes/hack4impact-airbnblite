@@ -1,0 +1,6 @@
+framework module Pods_airbnblite_backend {
+  umbrella header "Pods-airbnblite-backend-umbrella.h"
+
+  export *
+  module * { export * }
+}
