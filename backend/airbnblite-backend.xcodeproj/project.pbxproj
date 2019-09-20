@@ -10,7 +10,24 @@
 		ADA039E11C8DDDFA004B452D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA039E01C8DDDFA004B452D /* AppDelegate.m */; };
 		ADA039E41C8DDDFA004B452D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA039E31C8DDDFA004B452D /* main.m */; };
 		E4C64F2E9103EA65AC374B09 /* Pods_airbnblite_backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB09DCA3FBA88556F34D9C7 /* Pods_airbnblite_backend.framework */; };
+		EE5E1D5D2331C65D00714B04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5E1D5C2331C65D00714B04 /* main.m */; };
+		EE5E1D632331C69B00714B04 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE5E1D612331C69B00714B04 /* DataModel.xcdatamodeld */; };
+		EE5E1D642331C69B00714B04 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE5E1D612331C69B00714B04 /* DataModel.xcdatamodeld */; };
+		EE5E1D672331CAD400714B04 /* H4IRentalProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5E1D662331CAD400714B04 /* H4IRentalProperty.m */; };
+		EE5E1D682331CAD400714B04 /* H4IRentalProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5E1D662331CAD400714B04 /* H4IRentalProperty.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EE5E1D582331C65D00714B04 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1EB09DCA3FBA88556F34D9C7 /* Pods_airbnblite_backend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_airbnblite_backend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +39,11 @@
 		ADA039E31C8DDDFA004B452D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADA039EA1C8DDDFA004B452D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9D7D9C53B804775D42BB4F5 /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		EE5E1D5A2331C65D00714B04 /* playgrounnd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = playgrounnd; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE5E1D5C2331C65D00714B04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE5E1D622331C69B00714B04 /* H4IRentalProperty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = H4IRentalProperty.xcdatamodel; sourceTree = "<group>"; };
+		EE5E1D652331CAD400714B04 /* H4IRentalProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = H4IRentalProperty.h; sourceTree = "<group>"; };
+		EE5E1D662331CAD400714B04 /* H4IRentalProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = H4IRentalProperty.m; sourceTree = "<group>"; };
 		FEF72EE5D162F3BF7DBC5361 /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -31,6 +53,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4C64F2E9103EA65AC374B09 /* Pods_airbnblite_backend.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE5E1D572331C65D00714B04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA039DE1C8DDDFA004B452D /* backend */,
+				EE5E1D5B2331C65D00714B04 /* playgrounnd */,
 				ADA039DD1C8DDDFA004B452D /* Products */,
 				083BE7B5B59F9B9E75F58F94 /* Pods */,
 				310FE65FBBAD6A7B667D61C0 /* Frameworks */,
@@ -70,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA039DC1C8DDDFA004B452D /* airbnblite-backend.app */,
+				EE5E1D5A2331C65D00714B04 /* playgrounnd */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,8 +108,11 @@
 		ADA039DE1C8DDDFA004B452D /* backend */ = {
 			isa = PBXGroup;
 			children = (
+				EE5E1D612331C69B00714B04 /* DataModel.xcdatamodeld */,
 				ADA039DF1C8DDDFA004B452D /* AppDelegate.h */,
 				ADA039E01C8DDDFA004B452D /* AppDelegate.m */,
+				EE5E1D652331CAD400714B04 /* H4IRentalProperty.h */,
+				EE5E1D662331CAD400714B04 /* H4IRentalProperty.m */,
 				ADA039EA1C8DDDFA004B452D /* Info.plist */,
 				ADA039E21C8DDDFA004B452D /* Supporting Files */,
 			);
@@ -93,6 +127,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EE5E1D5B2331C65D00714B04 /* playgrounnd */ = {
+			isa = PBXGroup;
+			children = (
+				EE5E1D5C2331C65D00714B04 /* main.m */,
+			);
+			path = playgrounnd;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,7 +147,6 @@
 				ADA039D81C8DDDFA004B452D /* Sources */,
 				ADA039D91C8DDDFA004B452D /* Frameworks */,
 				ADA039DA1C8DDDFA004B452D /* Resources */,
-				2343BE4CEC425837C77BE15F /* Embed Pods Frameworks */,
 				3E0DB27099D5304DC9C18546 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -116,6 +157,23 @@
 			productName = HelloWorld;
 			productReference = ADA039DC1C8DDDFA004B452D /* airbnblite-backend.app */;
 			productType = "com.apple.product-type.application";
+		};
+		EE5E1D592331C65D00714B04 /* playgrounnd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE5E1D602331C65D00714B04 /* Build configuration list for PBXNativeTarget "playgrounnd" */;
+			buildPhases = (
+				EE5E1D562331C65D00714B04 /* Sources */,
+				EE5E1D572331C65D00714B04 /* Frameworks */,
+				EE5E1D582331C65D00714B04 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = playgrounnd;
+			productName = playgrounnd;
+			productReference = EE5E1D5A2331C65D00714B04 /* playgrounnd */;
+			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
@@ -128,6 +186,10 @@
 				TargetAttributes = {
 					ADA039DB1C8DDDFA004B452D = {
 						CreatedOnToolsVersion = 7.2.1;
+					};
+					EE5E1D592331C65D00714B04 = {
+						CreatedOnToolsVersion = 10.3;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -146,6 +208,7 @@
 			projectRoot = "";
 			targets = (
 				ADA039DB1C8DDDFA004B452D /* airbnblite-backend */,
+				EE5E1D592331C65D00714B04 /* playgrounnd */,
 			);
 		};
 /* End PBXProject section */
@@ -161,21 +224,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2343BE4CEC425837C77BE15F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3E0DB27099D5304DC9C18546 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,6 +290,18 @@
 			files = (
 				ADA039E41C8DDDFA004B452D /* main.m in Sources */,
 				ADA039E11C8DDDFA004B452D /* AppDelegate.m in Sources */,
+				EE5E1D672331CAD400714B04 /* H4IRentalProperty.m in Sources */,
+				EE5E1D632331C69B00714B04 /* DataModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE5E1D562331C65D00714B04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE5E1D642331C69B00714B04 /* DataModel.xcdatamodeld in Sources */,
+				EE5E1D682331CAD400714B04 /* H4IRentalProperty.m in Sources */,
+				EE5E1D5D2331C65D00714B04 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +413,61 @@
 			};
 			name = Release;
 		};
+		EE5E1D5E2331C65D00714B04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE5E1D5F2331C65D00714B04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -374,7 +489,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		EE5E1D602331C65D00714B04 /* Build configuration list for PBXNativeTarget "playgrounnd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE5E1D5E2331C65D00714B04 /* Debug */,
+				EE5E1D5F2331C65D00714B04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE5E1D612331C69B00714B04 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE5E1D622331C69B00714B04 /* H4IRentalProperty.xcdatamodel */,
+			);
+			currentVersion = EE5E1D622331C69B00714B04 /* H4IRentalProperty.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ADA039D41C8DDDFA004B452D /* Project object */;
 }

@@ -7,7 +7,13 @@
 //
 
 #import "H4IRentalProperty.h"
+/*
 
 @implementation H4IRentalProperty
 
+@dynamic name;
+
+
 @end
+
+*/

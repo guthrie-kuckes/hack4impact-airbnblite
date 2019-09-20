@@ -7,11 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
 NS_ASSUME_NONNULL_BEGIN
+/*
+@interface H4IRentalProperty : NSManagedObject
 
-@interface H4IRentalProperty : NSObject
+
+@property (nonatomic, strong) NSString *name;
+
 
 @end
 
+
+*/
 NS_ASSUME_NONNULL_END
