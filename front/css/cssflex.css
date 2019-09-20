@@ -1,0 +1,104 @@
+            /* This is the "if, then" statement in CSS. The first @media states that if the browser screen is [600px,800px), the following will happen */
+            @media (min-width: 600px) {
+                .c1 {
+                    width: 48%;
+                    -webkit-order: 1;
+                    /* The second order is used for browsers without the webkit capability just to make sure that it still works */
+                    order: 1;
+                }
+                .c2 {
+                    width: 48%;
+                    -webkit-order: 2;
+                    order: 2;
+                }
+                .c3 {
+                    width: 48%;
+                    -webkit-order: 3;
+                    order: 3;
+                }
+                .c4 {
+                    width: 48%;
+                    -webkit-order: 4;
+                    order: 4;
+                }
+                .c5 {
+                    width: 48%;
+                    -webkit-order: 5;
+                    order: 5;
+                }
+                .c6 {
+                    width: 48%;
+                    -webkit-order: 6;
+                    order: 6;
+                }
+                .c7 {
+                    width: 48%;
+                    -webkit-order: 7;
+                    order: 7;
+                }
+                .c8 {
+                    width: 48%;
+                    -webkit-order: 8;
+                    order: 8;
+                }
+            }
+            
+            
+            /* This is when the browser screen exceeds 800px */
+
+            /*
+            @media (min-width: 800px) {
+                .c2 {
+                    width: 20%;
+                }
+                .c3 {
+                    width: 20%;
+                }
+            }
+            */
+            
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <div class="c1">
+                <h3>Column 1</h3>
+                
+            </div>
+            
+            <div class="c2">
+                <h3>Column 2</h3>
+            </div>
+            
+            <div class="c3">
+                <h3>Column 3</h3>
+            </div>
+            
+            <div class="c4">
+                <h3>Column 4</h3>
+            </div>
+            
+            <div class="c5">
+                <h3>Column 5</h3>
+            </div>
+            
+            <div class="c6">
+                <h3>Column 6</h3>
+            </div>
+            
+            <div class="c7">
+                <h3>Column 7</h3>
+            </div>
+            
+            <div class="c8">
+                <h3>Column 8</h3>
+            </div>
+        </div>
+        
+    </body>
+    
+</html>
