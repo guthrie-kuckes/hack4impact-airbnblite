@@ -7,7 +7,10 @@
         <meta charset="UTF-8">
         
         <!-- Title Tag --> 
-        <title>Airbnb Lite</title>
+        <title>Airbnb Lite - Host</title>
+        
+        <!-- Links to Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
         <!-- sets initial scale -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,20 +65,23 @@
             <h1 style="font-size:30px; font-family:Georgia;"><b>List Your Property</b></h1>
             <form action="list_property_display.html" method="get">
                 <br><br>
-                <b>Property Name:</b><br><input type="text" name="propertyName">
+                <b>Property Name:</b><br><input type="text" name="property_name">
                 <br><br>
                 
-                <b>Price/Night ($):</b><br><input type="number" name="price">
+                <b>Price/Night ($):</b><br><input type="number" name="cost_per_night">
                 <br><br>             
                 
                 <b>Description:</b><br><input type="text" name="description">
                 <br><br>
                     
                 <b>Maximum Occupants:</b><br>
-                <input type="number" name="maxOccupants">
+                <input type="number" name="number_of_guests">
                 <br><br>
                 
-                <b>Number of Nights:</b><br><input type="number" name="nights">
+                <b>Maximum Number of Nights:</b><br><input type="number" name="max_nights">
+                <br><br>
+                
+                <b>Minimum Number of Nights:</b><br><input type="number" name="min_nights">
                 <br><br>
                 
                 <h6>Upload pictures of your property!</h6>
@@ -100,6 +106,13 @@
                 <h6 style="text-align: center; font-family: Georgia">Created by Guthrie Kuckes and Cathy Cheng for Hack4Impact</h6>
             </footer>
         </div>
+        
+        <script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        </script>
         
     </body>
         
