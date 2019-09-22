@@ -22,8 +22,10 @@
 ///user for listing a property
 @property NSString* thanksForListingHTML;
 
-///HTML for what
+///HTML for what would display if there were no search results
 @property NSString* emptyRentalResultsHTML;
+
+@property NSString* individualResultHTML;
 
 
 @end
@@ -132,6 +134,11 @@
     self.emptyRentalResultsHTML = [NSString stringWithContentsOfFile:rentalDisplayPath
                                                            encoding:NSUTF8StringEncoding
                                                               error:&setupError];
+    
+    NSString* individualResultPath = [self.pathToHTML stringByAppendingString:@"/individual_property_listing.html"];
+    self.individualResultHTML = [NSString stringWithContentsOfFile:individualResultPath
+                                                          encoding:NSUTF8StringEncoding
+                                                             error:&setupError];
     if(setupError)
     {
         NSLog(setupError.description);
@@ -164,7 +171,8 @@
     //Tells the server how to dynamically generate rental search results
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
     
-        NSString* serve = _emptyRentalResultsHTML;
+        NSString* serve = [self emptyRentalResultsHTML];
+        serve = [serve stringByReplacingOccurrencesOfString:@"<!-- property listings go here -->" withString:_individualResultHTML];
         
         [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
         [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
