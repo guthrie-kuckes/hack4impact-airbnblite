@@ -99,41 +99,88 @@
 }
 
 
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+///Does all necessary setup for my application to run,
+///including initializing the database
+-(void)serverSetup
+{
     self.server = [[CRHTTPServer alloc] init];
     
-    
     [self initializeDatabase];
+    
     //[self deleteDatabase];
-    
     [self logWholeDatabase];
-    
-   /* NSError* addError = nil;
-    [self addPropertyToDatabase:@"my mansion" withMaxOccupancy:5000 maxDaysForRental:-5 nightlyCost: 100*100 error:&addError
-     ];
-    if (addError)
-        NSLog(addError.description);*/
-    
     
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
         [response setValue:[NSBundle mainBundle].bundleIdentifier forHTTPHeaderField:@"Server"];
         completionHandler();
     }];
+}
+
+
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    
+    //does most of the needed setup, initializes instance variables and the database
+    [self serverSetup];
+    
+    //Tells the server to fetch all resources which can be statically served
+    NSString* frontPath = [[NSBundle mainBundle].resourcePath stringByAppendingString:@"/front"];
+    [self.server mountStaticDirectoryAtPath:frontPath forPath:@"/"];
+    
+    NSError* setupError = nil;
+    NSString* thanksForListingPath = [frontPath stringByAppendingString:@"/list_property_display.html"];
+    NSString* thanksForListingStatic = [NSString stringWithContentsOfFile:thanksForListingPath
+                                                                 encoding:NSUTF8StringEncoding
+                                                                    error:&setupError];
+    if(setupError)
+    {
+        NSLog(setupError.description);
+        abort();
+    }
+
     
     
+    
+    //Tells the server how to dynamically generate rental search results
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
     
-        NSString* serve = [NSString stringWithContentsOfFile:@"/Users/valence/Desktop/index.html" encoding:NSUTF8StringEncoding error:nil];
+        NSString* serve = @"stuff"; //[NSString stringWithContentsOfFile:@"/Users/valence/Documents/google_drive/ofCodrs/hack4impact/airbnb_lite/front/index.html" encoding:NSUTF8StringEncoding error:nil];
         
         [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
         [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
         [response sendString:serve];
         completionHandler();
-    } forPath:@"/" HTTPMethod:CRHTTPMethodGet];
+    } forPath:@"/generate_rental_results" HTTPMethod:CRHTTPMethodGet];
+    
+    
+    //Tells the server how to deal with posting a property to rent
+    [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
+        
+        NSString* serve = thanksForListingStatic;
+        
+        //when there are spaces in the name, the url encodes them as +
+        NSString* name = [request.query[@"property_name"] stringByReplacingOccurrencesOfString: @"+" withString:@" "];
+        
+        //use this!
+        NSString* description = request.query[@"description"];
+        
+        NSInteger max_nights = [request.query[@"max_nights"] integerValue];
+        //comes back from the server in dollars
+        NSInteger nightlyCost = [request.query[@"cost_per_night"] integerValue] * 100;
+        [self addPropertyToDatabase:name withMaxOccupancy:0 maxDaysForRental:max_nights nightlyCost:nightlyCost error:nil];
+        NSLog(request.query.description);
+        
+        [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
+        [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
+        [response sendString:serve];
+        completionHandler();
+    } forPath:@"/dynamic_list_property" HTTPMethod:CRHTTPMethodGet];
+
     
     
     
+    
+    /*
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
         
         NSString* last = request.query[@"lastname"];
@@ -141,11 +188,11 @@
         
         [response sendString:serve];
         completionHandler();
-    } forPath:@"/result" HTTPMethod:CRHTTPMethodGet];
+    } forPath:@"/result" HTTPMethod:CRHTTPMethodGet];*/
 
     
-    
-    
+    //Logs all requests to the serevr
+    /*
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
         NSUInteger statusCode = request.response.statusCode;
         NSString* contentLength = [request.response valueForHTTPHeaderField:@"Content-Length"];
@@ -153,7 +200,7 @@
         NSString* remoteAddress = request.connection.remoteAddress;
         NSLog(@"%@ %@ - %lu %@ - %@", remoteAddress, request, statusCode, contentLength ? : @"-", userAgent);
         completionHandler();
-    }];
+    }];*/
     
     [self.server startListening];
 }
