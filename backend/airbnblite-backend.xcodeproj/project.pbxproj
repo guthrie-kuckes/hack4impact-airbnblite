@@ -10,6 +10,7 @@
 		ADA039E11C8DDDFA004B452D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA039E01C8DDDFA004B452D /* AppDelegate.m */; };
 		ADA039E41C8DDDFA004B452D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA039E31C8DDDFA004B452D /* main.m */; };
 		E4C64F2E9103EA65AC374B09 /* Pods_airbnblite_backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB09DCA3FBA88556F34D9C7 /* Pods_airbnblite_backend.framework */; };
+		EE68BD3D233712D100F651F9 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE68BD3B233712D100F651F9 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		ADA039E31C8DDDFA004B452D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ADA039EA1C8DDDFA004B452D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9D7D9C53B804775D42BB4F5 /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		EE68BD3C233712D100F651F9 /* H4IRentalProperty.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = H4IRentalProperty.xcdatamodel; sourceTree = "<group>"; };
 		FEF72EE5D162F3BF7DBC5361 /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 		ADA039DE1C8DDDFA004B452D /* backend */ = {
 			isa = PBXGroup;
 			children = (
+				EE68BD3B233712D100F651F9 /* DataModel.xcdatamodeld */,
 				ADA039DF1C8DDDFA004B452D /* AppDelegate.h */,
 				ADA039E01C8DDDFA004B452D /* AppDelegate.m */,
 				ADA039EA1C8DDDFA004B452D /* Info.plist */,
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE68BD3D233712D100F651F9 /* DataModel.xcdatamodeld in Sources */,
 				ADA039E41C8DDDFA004B452D /* main.m in Sources */,
 				ADA039E11C8DDDFA004B452D /* AppDelegate.m in Sources */,
 			);
@@ -359,6 +363,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EE68BD3B233712D100F651F9 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EE68BD3C233712D100F651F9 /* H4IRentalProperty.xcdatamodel */,
+			);
+			currentVersion = EE68BD3C233712D100F651F9 /* H4IRentalProperty.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ADA039D41C8DDDFA004B452D /* Project object */;
 }
