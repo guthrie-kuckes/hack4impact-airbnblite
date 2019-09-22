@@ -38,6 +38,9 @@
 @property NSString* individualResultHTML;
 
 
+@property NSString* thanksForRentingHTML;
+
+
 
 ///Unique IDs are sequential: this is initialized when the application starts up;
 @property unsigned long lastUniqueID;

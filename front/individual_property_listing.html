@@ -10,13 +10,14 @@
             <div class="col-sm-7 my-auto" style="text-align: center;">
                 <br>
                 <p><b>${property_name}</b></p><br>
-                <p>Location: x</p>
-                <p>Price/Night: x</p>
-                <p>Maximum Occupants: x</p>
-                <p>Description: x</p>
+                <!-- <p>Location: x</p> -->
+                <p>Price/Night: ${nightly_cost} </p>
+                <!-- <p>Maximum Occupants: x</p>
+                <p>Description: x</p> -->
                 <br>
                 
-                <form action="rented.html" method="get">
+                <form action="dynamic_rented" method="get">
+                    <input type="number" name="unique_id" value="${unique_id}" style="display:none;">
                     <input type="submit" value="Rent">
                         </form>
                 <br>

@@ -22,6 +22,12 @@
     NSString* copy = [self.individualResultHTML copy];
     copy = [copy stringByReplacingOccurrencesOfString:@"${property_name}"
                                            withString:[property valueForKey:@"name"]];
+    NSNumber* uniqueID = [property valueForKey:@"unique_id"];
+    copy = [copy stringByReplacingOccurrencesOfString:@"${unique_id}"
+                                           withString: uniqueID.description];
+    NSNumber* cost = [property valueForKey:@"nightly_cost"];
+    NSString* asString = [NSString stringWithFormat:@"$%d", [cost integerValue] / 100];
+    copy = [copy stringByReplacingOccurrencesOfString:@"${nightly_cost}" withString:asString];
     return copy;
 }
 
@@ -40,6 +46,11 @@
                                                                  encoding:NSUTF8StringEncoding
                                                                     error:&setupError];
     
+    NSString* thanksForRentingPath = [self.pathToHTML stringByAppendingString:@"/rented.html"];
+    self.thanksForRentingHTML = [NSString stringWithContentsOfFile:thanksForRentingPath
+                                                          encoding:NSUTF8StringEncoding
+                                                             error:&setupError];
+    
     NSString* rentalDisplayPath = [self.pathToHTML stringByAppendingString:@"/property_search_display.html"];
     self.emptyRentalResultsHTML = [NSString stringWithContentsOfFile:rentalDisplayPath
                                                            encoding:NSUTF8StringEncoding
@@ -49,6 +60,8 @@
     self.individualResultHTML = [NSString stringWithContentsOfFile:individualResultPath
                                                           encoding:NSUTF8StringEncoding
                                                              error:&setupError];
+
+    
     if(setupError)
     {
         NSLog(setupError.description);
@@ -83,6 +96,29 @@
     //does most of the needed setup, initializes instance variables and the database
     [self serverSetup];
     
+    //Tells the server how to mark a property as rented
+    [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
+        
+        NSString* serve = [self thanksForRentingHTML];
+        
+        NSError *error = nil;
+        NSFetchRequest *IDrequest = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
+        [IDrequest setPredicate:[NSPredicate predicateWithFormat:@"unique_id == %@", request.query[@"unique_id"]]];
+        NSArray *results = [self.objectContext executeFetchRequest:IDrequest error:&error];
+        for (NSManagedObject* obj in results)
+        {
+            [obj setValue:[NSNumber numberWithBool:YES] forKey:@"reserved"];
+        }
+        [self.objectContext save:nil];
+        
+        
+        [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
+        [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
+        [response sendString:serve];
+        completionHandler();
+    } forPath:@"/dynamic_rented" HTTPMethod:CRHTTPMethodGet];
+
+    
     //Tells the server to fetch all resources which can be statically served
     [self.server mountStaticDirectoryAtPath:self.pathToHTML forPath:@"/" options: CRStaticDirectoryServingOptionsAutoIndex];
     
@@ -102,21 +138,24 @@
         }
 
         
-        serve = [serve stringByReplacingOccurrencesOfString:@"${num_search_results}"
-                                                 withString:[NSString stringWithFormat:@"%lu", results.count]];
         
         
         NSRange range = [serve rangeOfString:@"<!-- property listings go here -->"];
+        int goodCount = 0;
         for (NSManagedObject* obj in results)
         {
             id isReservedID = [obj valueForKey:@"reserved"];
             BOOL isReserved = [(NSNumber*)(isReservedID) boolValue];
             if (!isReserved)
             {
+                goodCount++;
                 NSString* formatted = [self fillOutPropertyBlockWithProperty:obj];
                 [serve insertString:formatted atIndex:range.location];
             }
         }
+        serve = [serve stringByReplacingOccurrencesOfString:@"${num_search_results}"
+                                                 withString:[NSString stringWithFormat:@"%d", goodCount]];
+
         
         [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
         [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
