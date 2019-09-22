@@ -1,15 +1,99 @@
 #import "AppDelegate.h"
 
+#import <CoreData/CoreData.h>
+
 @interface AppDelegate () <CRServerDelegate>
 
 @property (nonatomic, strong, nonnull) CRServer* server;
+
+@property NSPersistentContainer* persistentContainer;
+
+@property NSManagedObjectContext* objectContext;
+
 
 @end
 
 @implementation AppDelegate
 
++(void)logProperty:(NSManagedObject*)property
+{
+    NSString* name = [property valueForKey:@"name"];
+    NSNumber* max_occupancy = [property valueForKey:@"max_occupancy"];
+    NSString* formatted = [NSString stringWithFormat:@"name: \"%@\", max_occupancy: %@",
+                           name, max_occupancy];
+    NSLog(formatted);
+}
+
+
+//encapsulates mostly apple code
+-(void)initializeDatabase
+{
+    self.persistentContainer = [[NSPersistentContainer alloc] initWithName:@"DataModel"];
+    [self.persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *description, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Failed to load Core Data stack: %@", error);
+            abort();
+        }
+        //callback();
+    }];
+    self.objectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    self.objectContext.persistentStoreCoordinator = self.persistentContainer.persistentStoreCoordinator;
+}
+
+-(void)deleteDatabase
+{
+    NSError *error = nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
+    NSArray *results = [self.objectContext executeFetchRequest:request error:&error];
+    for (NSManagedObject* obj in results)
+    {
+        [self.objectContext deleteObject:obj];
+    }
+    if (!results) {
+        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
+}
+
+-(void)addPropertyToDatabase:(NSString*)propertyName
+            withMaxOccupancy:(uint16)maxOccupancy
+                       error:(NSError**)error
+{
+    NSManagedObject* newOne = [NSEntityDescription insertNewObjectForEntityForName:@"H4IRentalProperty"
+                inManagedObjectContext:self.objectContext];
+    [newOne setValue:propertyName forKey:@"name"];
+    NSNumber* copy = [NSNumber numberWithInteger:maxOccupancy];
+    [newOne setValue:copy forKey:@"max_occupancy"];
+    [self.objectContext save:error];
+}
+
+
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     self.server = [[CRHTTPServer alloc] init];
+    
+    
+    [self initializeDatabase];
+    //[self deleteDatabase];
+    
+    
+    NSError* addError = nil;
+    [self addPropertyToDatabase:@"my mansion" withMaxOccupancy:5000 error:&addError
+     ];
+    if (addError)
+        NSLog(addError.description);
+    
+    NSError *error = nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
+    NSArray *results = [self.objectContext executeFetchRequest:request error:&error];
+    for (NSManagedObject* obj in results)
+    {
+        [AppDelegate logProperty:obj];
+    }
+    if (!results) {
+        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    }
     
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
         [response setValue:[NSBundle mainBundle].bundleIdentifier forHTTPHeaderField:@"Server"];
