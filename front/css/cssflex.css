@@ -1,4 +1,6 @@
-            /* This is the "if, then" statement in CSS. The first @media states that if the browser screen is [600px,800px), the following will happen */
+          
+
+/* This is the "if, then" statement in CSS. The first @media states that if the browser screen is [600px,800px), the following will happen */
             @media (min-width: 600px) {
                 .c1 {
                     width: 48%;
@@ -102,3 +104,4 @@
     </body>
     
 </html>
+

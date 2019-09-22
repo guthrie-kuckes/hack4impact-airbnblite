@@ -56,60 +56,30 @@
                  <a href="account.html"><i class="fa fa-user"> My Account</i></a>
             </div>
            
-            </div>    
+            </div>   
+         
+        <br>
         
-        <br><br><br><br>
         <div class="information-card">
             
             <br><br><br><br><br>
-            <h1 style="font-size:30px; font-family:Georgia;"><b>List Your Property</b></h1>
-            <!-- A page dynamically generated on the server side--this is done in order to capture the input -->
-            <form action="dynamic_list_property" method="get">
-                <br><br>
-                <b>Property Name:</b><br><input type="text" name="property_name">
-                <br><br>
-                
-                <b>Price/Night ($):</b><br><input type="number" name="cost_per_night">
-                <br><br>             
-                
-                <b>Description:</b><br><input type="text" name="description">
-                <br><br>
-                    
-                <b>Maximum Occupants:</b><br>
-                <input type="number" name="number_of_guests">
-                <br><br>
-                
-                <b>Maximum Number of Nights:</b><br><input type="number" name="max_nights">
-                <br><br>
-                
-                <b>Minimum Number of Nights:</b><br><input type="number" name="min_nights">
-                <br><br>
-                
-                <h6>Upload pictures of your property!</h6>
-                
-                <br>
-                <input align="center" type="file" name="fileToUpload" id="fileToUpload">
-                <br><br>
-                
-                <input type="submit" value="Submit">
-    
-            </form>
+            <h1 style="font-size:30px; font-family:Georgia;color:red;"><b>There was an error with your search</b></h1>
+            <br>
+            <h4 style="text-align:center; ">Please check to make sure that there are no invalid inputs!</h4>
+            <br>
+            
+            <div style="text-align:center;"><button><a href="rent.html">Return to Search</a></button></div>
             
             <br>
             
-            <!-- This is what the code is actually supposed to be..
-            <form action="upload.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Upload Image" name="submit">
-            </form>
-            -->
         </div>
-         
+        
         <div id="page-container">
             <footer id="footer">
                 <h6 style="text-align: center; font-family: Georgia">Created by Guthrie Kuckes and Cathy Cheng for Hack4Impact</h6>
             </footer>
         </div>
+        
         
         <script>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

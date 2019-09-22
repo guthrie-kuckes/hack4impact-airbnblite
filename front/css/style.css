@@ -37,7 +37,9 @@
     }
 
     .hero-image {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+       
+
+     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
       height: 100%;
       background-position: center;
       background-repeat: no-repeat;
@@ -147,13 +149,10 @@
     background-color: white;
     width: 85vw;
     height: auto;
-    padding: auto;
     color: black;
     border: 1px solid black;
-    margin: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin:auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 /* Formats the icons to be centered appropriately */
@@ -185,12 +184,13 @@
 /* Footer Styling */
 #page-container {
   position: relative;
-  min-height: 70vh;
+  min-height: 7vh;
 }
 
-#footer {
+footer {
   position: absolute;
   bottom: 0px;
+  top:0px;
   width: 100%;
   background-color:black;
   color:white;
