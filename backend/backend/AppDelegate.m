@@ -188,6 +188,11 @@
         NSError *error = nil;
         NSFetchRequest *allRequest = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
         NSArray *results = [self.objectContext executeFetchRequest:allRequest error:&error];
+        if (!results) {
+            NSLog(@"Error fetching rental property objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+
         
         serve = [serve stringByReplacingOccurrencesOfString:@"${num_search_results}"
                                                  withString:[NSString stringWithFormat:@"%lu", results.count]];
@@ -196,14 +201,14 @@
         NSRange range = [serve rangeOfString:@"<!-- property listings go here -->"];
         for (NSManagedObject* obj in results)
         {
-            NSString* formatted = [self fillOutPropertyBlockWithProperty:obj];
-            [serve insertString:formatted atIndex:range.location];
+            id isReservedID = [obj valueForKey:@"reserved"];
+            BOOL isReserved = [(NSNumber*)(isReservedID) boolValue];
+            if (!isReserved)
+            {
+                NSString* formatted = [self fillOutPropertyBlockWithProperty:obj];
+                [serve insertString:formatted atIndex:range.location];
+            }
         }
-        if (!results) {
-            NSLog(@"Error fetching rental property objects: %@\n%@", [error localizedDescription], [error userInfo]);
-            abort();
-        }
-
         
         [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
         [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
