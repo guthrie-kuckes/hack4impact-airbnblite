@@ -1,119 +1,17 @@
 #import "AppDelegate.h"
 
+#import "AppDelegate+AppDelegate_DatabaseInteractions.h"
+
 #import <CoreData/CoreData.h>
 
 @interface AppDelegate () <CRServerDelegate>
 
-@property (nonatomic, strong, nonnull) CRServer* server;
-
-
-///A high level object in the CoreData stack--think the stack might
-///get mad if I don't keep a reference but otherwise unused
-@property NSPersistentContainer* persistentContainer;
-
-@property NSManagedObjectContext* objectContext;
-
-///The path all of the html files reside at in the bundle
-///(path to the copy of the front folder from this project
-///that is copied to the bundle during compilation).
-@property NSString* pathToHTML;
-
-///Full html text to display a message for thanking the
-///user for listing a property
-@property NSString* thanksForListingHTML;
-
-///HTML for what would display if there were no search results
-@property NSString* emptyRentalResultsHTML;
-
-@property NSString* individualResultHTML;
 
 
 @end
 
 @implementation AppDelegate
 
-+(void)logProperty:(NSManagedObject*)property
-{
-    NSString* name = [property valueForKey:@"name"];
-    NSNumber* max_occupancy = [property valueForKey:@"max_occupancy"];
-    NSNumber* max_days = [property valueForKey:@"max_days"];
-    NSNumber* nightly_cost = [property valueForKey:@"nightly_cost"];
-    NSString* reservedString = [property valueForKey:@"reserved"] ? @"true" : @"false";
-    
-    NSString* formatted = [NSString stringWithFormat:@"name: \"%@\", max_occupancy: %@, max_days: %@, nightly_cost: %@ cents, reserved: %@",
-                           name, max_occupancy, max_days, nightly_cost, reservedString];
-    NSLog(formatted);
-}
-
--(void)logWholeDatabase
-{
-    NSError *error = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
-    NSArray *results = [self.objectContext executeFetchRequest:request error:&error];
-    for (NSManagedObject* obj in results)
-    {
-        [AppDelegate logProperty:obj];
-    }
-    if (!results) {
-        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
-    }
-
-}
-
-
-//encapsulates mostly apple code
--(void)initializeDatabase
-{
-    self.persistentContainer = [[NSPersistentContainer alloc] initWithName:@"DataModel"];
-    [self.persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *description, NSError *error) {
-        if (error != nil) {
-            NSLog(@"Failed to load Core Data stack: %@", error);
-            abort();
-        }
-        //callback();
-    }];
-    self.objectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    self.objectContext.persistentStoreCoordinator = self.persistentContainer.persistentStoreCoordinator;
-}
-
--(void)deleteDatabase
-{
-    NSError *error = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
-    NSArray *results = [self.objectContext executeFetchRequest:request error:&error];
-    for (NSManagedObject* obj in results)
-    {
-        [self.objectContext deleteObject:obj];
-    }
-    if (!results) {
-        NSLog(@"Error fetching Employee objects: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
-    }
-}
-
--(void)addPropertyToDatabase:(NSString*)propertyName
-            withMaxOccupancy:(uint16)maxOccupancy
-            maxDaysForRental:(uint16)maxDays
-                 nightlyCost:(uint16)cost
-                       error:(NSError**)error
-{
-    NSManagedObject* newOne = [NSEntityDescription insertNewObjectForEntityForName:@"H4IRentalProperty"
-                inManagedObjectContext:self.objectContext];
-    [newOne setValue:propertyName forKey:@"name"];
-    NSNumber* copy = [NSNumber numberWithInteger:maxOccupancy];
-    [newOne setValue:copy forKey:@"max_occupancy"];
-    
-    copy = [NSNumber numberWithInteger:maxDays];
-    [newOne setValue:copy forKey:@"max_days"];
-
-    copy = [NSNumber numberWithInteger:cost];
-    [newOne setValue:copy forKey:@"nightly_cost"];
-    
-    [newOne setValue:FALSE forKey:@"reserved"];
-    
-    [self.objectContext save:error];
-}
 
 
 ///Returns the html code for displaying an individual search result
@@ -158,6 +56,16 @@
     }
     
     [self initializeDatabase];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
+    NSArray *results = [self.objectContext executeFetchRequest:request error:nil];
+    self.lastUniqueID = 0;
+    for (NSManagedObject* obj in results)
+    {
+        NSNumber* toCompare = [obj valueForKey:@"unique_id"];
+        if (toCompare.unsignedLongValue >  self.lastUniqueID)
+            self.lastUniqueID = toCompare.unsignedLongValue;
+    }
+
     
     //[self deleteDatabase];
     [self logWholeDatabase];
