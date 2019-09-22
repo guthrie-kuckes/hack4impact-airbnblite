@@ -6,9 +6,24 @@
 
 @property (nonatomic, strong, nonnull) CRServer* server;
 
+
+///A high level object in the CoreData stack--think the stack might
+///get mad if I don't keep a reference but otherwise unused
 @property NSPersistentContainer* persistentContainer;
 
 @property NSManagedObjectContext* objectContext;
+
+///The path all of the html files reside at in the bundle
+///(path to the copy of the front folder from this project
+///that is copied to the bundle during compilation).
+@property NSString* pathToHTML;
+
+///Full html text to display a message for thanking the
+///user for listing a property
+@property NSString* thanksForListingHTML;
+
+///HTML for what
+@property NSString* emptyRentalResultsHTML;
 
 
 @end
@@ -104,6 +119,24 @@
 -(void)serverSetup
 {
     self.server = [[CRHTTPServer alloc] init];
+    self.pathToHTML = [[NSBundle mainBundle].resourcePath stringByAppendingString:@"/front"];
+    
+    
+    NSError* setupError = nil;
+    NSString* thanksForListingPath = [self.pathToHTML stringByAppendingString:@"/list_property_display.html"];
+    self.thanksForListingHTML = [NSString stringWithContentsOfFile:thanksForListingPath
+                                                                 encoding:NSUTF8StringEncoding
+                                                                    error:&setupError];
+    
+    NSString* rentalDisplayPath = [self.pathToHTML stringByAppendingString:@"/property_search_display.html"];
+    self.emptyRentalResultsHTML = [NSString stringWithContentsOfFile:rentalDisplayPath
+                                                           encoding:NSUTF8StringEncoding
+                                                              error:&setupError];
+    if(setupError)
+    {
+        NSLog(setupError.description);
+        abort();
+    }
     
     [self initializeDatabase];
     
@@ -124,27 +157,14 @@
     [self serverSetup];
     
     //Tells the server to fetch all resources which can be statically served
-    NSString* frontPath = [[NSBundle mainBundle].resourcePath stringByAppendingString:@"/front"];
-    [self.server mountStaticDirectoryAtPath:frontPath forPath:@"/"];
-    
-    NSError* setupError = nil;
-    NSString* thanksForListingPath = [frontPath stringByAppendingString:@"/list_property_display.html"];
-    NSString* thanksForListingStatic = [NSString stringWithContentsOfFile:thanksForListingPath
-                                                                 encoding:NSUTF8StringEncoding
-                                                                    error:&setupError];
-    if(setupError)
-    {
-        NSLog(setupError.description);
-        abort();
-    }
-
+    [self.server mountStaticDirectoryAtPath:self.pathToHTML forPath:@"/" options: CRStaticDirectoryServingOptionsAutoIndex];
     
     
     
     //Tells the server how to dynamically generate rental search results
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
     
-        NSString* serve = @"stuff"; //[NSString stringWithContentsOfFile:@"/Users/valence/Documents/google_drive/ofCodrs/hack4impact/airbnb_lite/front/index.html" encoding:NSUTF8StringEncoding error:nil];
+        NSString* serve = _emptyRentalResultsHTML;
         
         [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
         [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
@@ -156,7 +176,7 @@
     //Tells the server how to deal with posting a property to rent
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
         
-        NSString* serve = thanksForListingStatic;
+        NSString* serve = self.thanksForListingHTML;
         
         //when there are spaces in the name, the url encodes them as +
         NSString* name = [request.query[@"property_name"] stringByReplacingOccurrencesOfString: @"+" withString:@" "];
@@ -176,19 +196,6 @@
         completionHandler();
     } forPath:@"/dynamic_list_property" HTTPMethod:CRHTTPMethodGet];
 
-    
-    
-    
-    
-    /*
-    [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
-        
-        NSString* last = request.query[@"lastname"];
-        NSString* serve = [NSString stringWithFormat:@"lastname was %@", last];
-        
-        [response sendString:serve];
-        completionHandler();
-    } forPath:@"/result" HTTPMethod:CRHTTPMethodGet];*/
 
     
     //Logs all requests to the serevr
