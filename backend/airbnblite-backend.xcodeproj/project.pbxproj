@@ -105,7 +105,6 @@
 				ADA039D81C8DDDFA004B452D /* Sources */,
 				ADA039D91C8DDDFA004B452D /* Frameworks */,
 				ADA039DA1C8DDDFA004B452D /* Resources */,
-				2343BE4CEC425837C77BE15F /* Embed Pods Frameworks */,
 				3E0DB27099D5304DC9C18546 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -161,21 +160,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2343BE4CEC425837C77BE15F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		3E0DB27099D5304DC9C18546 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
