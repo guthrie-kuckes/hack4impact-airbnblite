@@ -116,6 +116,18 @@
 }
 
 
+///Returns the html code for displaying an individual search result
+///filled out with the correct information from one property retrieved from the database
+///(The managed object must be of the correct entity type)
+-(NSString*)fillOutPropertyBlockWithProperty:(NSManagedObject*)property
+{
+    NSString* copy = [self.individualResultHTML copy];
+    copy = [copy stringByReplacingOccurrencesOfString:@"${property_name}"
+                                           withString:[property valueForKey:@"name"]];
+    return copy;
+}
+
+
 ///Does all necessary setup for my application to run,
 ///including initializing the database
 -(void)serverSetup
@@ -171,8 +183,27 @@
     //Tells the server how to dynamically generate rental search results
     [self.server addBlock:^(CRRequest * _Nonnull request, CRResponse * _Nonnull response, CRRouteCompletionBlock  _Nonnull completionHandler) {
     
-        NSString* serve = [self emptyRentalResultsHTML];
-        serve = [serve stringByReplacingOccurrencesOfString:@"<!-- property listings go here -->" withString:_individualResultHTML];
+        NSMutableString* serve = [[self emptyRentalResultsHTML] mutableCopy];
+        
+        NSError *error = nil;
+        NSFetchRequest *allRequest = [NSFetchRequest fetchRequestWithEntityName:@"H4IRentalProperty"];
+        NSArray *results = [self.objectContext executeFetchRequest:allRequest error:&error];
+        
+        serve = [serve stringByReplacingOccurrencesOfString:@"${num_search_results}"
+                                                 withString:[NSString stringWithFormat:@"%lu", results.count]];
+        
+        
+        NSRange range = [serve rangeOfString:@"<!-- property listings go here -->"];
+        for (NSManagedObject* obj in results)
+        {
+            NSString* formatted = [self fillOutPropertyBlockWithProperty:obj];
+            [serve insertString:formatted atIndex:range.location];
+        }
+        if (!results) {
+            NSLog(@"Error fetching rental property objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
+        }
+
         
         [response setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-type"];
         [response setValue:@(serve.length).stringValue forHTTPHeaderField:@"Content-Length"];
